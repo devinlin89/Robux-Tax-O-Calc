@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Robux Tax O' Calc Calculator</title>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="Robux Tax O Calc Calculator.css">
+        <meta chartset="UTF-8">
+        <meta name="author" content="Devin Lin">
+        <meta name="description" content="A calculator to calculate robux tax">
+        <meta name="keywords" content="Roblox, Robux, Tax">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <style>
+                    *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none; 
+        }
+
+        .header{
+            width: 100%;
+            height: 15vh;
+            display: block;
+            background-color: dodgerblue;
+        }
+
+        .inner_header{
+            padding-left: 5vw;
+            padding-right: 5vw;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .logo_container{
+            height: 100%;
+            display: table;
+            float: left;
+        }
+
+        .logo_container h1{
+            color: white;
+            height: 100%;
+            display: table-cell;
+            vertical-align: middle;
+            font-family: 'Montserrat';
+            font-size: 60px;
+        }
+
+        .navigation{
+            float: right;
+            height: 100%;
+        }
+
+        .navigation a{
+            height: 100%;
+            display: table;
+            float: left;
+            padding: 0px 20px; 
+        }
+
+        .navigation a:last-child{
+            padding-right: 0;
+        }
+
+        .navigation a li{
+            display: table-cell;
+            vertical-align: middle;
+            height: 100%;
+            color: white;
+            font-family: 'Montserrat';
+            font-size: 20px;
+        }
+
+        .section {
+            padding-left: 5vw;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .section h2{
+            color: black;
+            font-family: 'Montserrat';
+            font-size: 32px;
+        }
+
+        .section p{
+            padding-top: 20px;
+            color: black;
+            font-family: 'Montserrat';
+            font-size: 24px;
+            padding-bottom: 20px;
+        }
+
+        .section span{
+            padding-top: 10px;
+            padding-left: 2px;
+        }
+
+        .section input[type=number] {
+            width: 200px;
+            height: 50px;
+            margin-top: 10px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+            font-size: 30px;
+            font-family: 'Montserrat';
+        }
+
+        .section button{
+            width: 200px;
+            height: 50px;
+            cursor: pointer;
+            color: white;
+            font-size: 30px;
+            font-family: 'Montserrat';
+            background-color: dodgerblue;
+            border-radius: 4px;
+            border: 2px solid #ccc;
+        }
+        </style>
+        <script>
+            function beforeTaxToAfterTax() {
+                let beforeTax = parseInt(document.getElementById("beforeRobux").value);
+                let afterTaxFloat = beforeTax / 100 * 70;
+    
+                if (afterTaxFloat - Math.floor(afterTaxFloat) > 0.5) {
+                    afterTax = Math.ceil(beforeTax / 100 * 70);
+                } else {
+                    afterTax = Math.floor(beforeTax / 100 * 70);
+                }
+
+                aftertax.innerHTML = `| Robux after tax is <strong>${afterTax}</strong>`;
+            }
+
+            function afterTaxtoBeforeTax() {
+                let afterTax = parseInt(document.getElementById("afterRobux").value);
+                let beforeTax = Math.ceil(afterTax / 70 * 100);
+                
+                let afterTaxFloat = beforeTax / 100 * 70;
+                
+                if (afterTaxFloat - Math.floor(afterTaxFloat) > 0.5) {
+                    afterTax2 = Math.ceil(beforeTax / 100 * 70);
+                } else {
+                    afterTax2 = Math.floor(beforeTax / 100 * 70);
+                }
+
+                if (afterTax != afterTax2) {
+                    beforeTax= Math.floor(afterTax/ 70 * 100);
+                }
+                beforetax.innerHTML = `| Robux before tax is <strong>${beforeTax}</strong>`;
+            }
+        </script>
+        <div class="header">
+            <div class="inner_header">
+                <div class="logo_container">
+                    <h1>Robux Tax O' Calc</h1>
+                </div>
+                <ul class="navigation">
+                    <a href = "Index.html"><li>Home</li></a>
+                    <a href = "Calculator.html"><li>Calculator</li></a>
+                    <a href = "About.html"><li>About</li></a>
+                </ul>
+            </div>
+        </div>
+        <div class="main">
+            <div class="article">
+                <div class="section">
+                    <h2>Before Tax to After Tax</h2>
+                    <p>Enter a number of robux before tax to convert it to a number of robux after 30% tax (You get 70%).</p>
+                    <span><input type="number" id="beforeRobux"/></span>
+                    <span><button onclick="beforeTaxToAfterTax()">Calculate</button></span>
+                    <p id="aftertax">|</p>
+                </div>
+                <hr>
+                <div class="section">
+                    <h2>After Tax to Before Tax</h2>
+                    <p>Enter a number of robux after 30% tax (You get 70%) to convert to a number of robux before tax.</p>
+                    <span><input type="number" id="afterRobux"/></span>
+                    <span><button onclick="afterTaxtoBeforeTax()">Calculate</button></span>
+                    <p id="beforetax">|</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
